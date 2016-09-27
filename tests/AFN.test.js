@@ -44,6 +44,9 @@ describe('AFN Class', function() {
 		it('Should format in Brazilian Phone Number Format...', function() {
 			var output = (new AFN(transictions)).transduce("5535988859698");
 			expect(output).to.equal("+55 (35) 98885-9698");
+
+			var output = (new AFN(transictions)).transduce("5535988888888");
+			expect(output).to.equal("+55 (35) 98888-8888");
 		});
 	});
 
