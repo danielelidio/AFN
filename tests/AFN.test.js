@@ -82,6 +82,9 @@ describe('AFN Class', function() {
 		it('Should format in Brazilian Date Format...', function() {
 			var output = (new AFN(transictions)).transduce("25091992");
 			expect(output).to.equal("25/09/1992");
+
+			var output = (new AFN(transictions)).transduce("0101/1987");
+			expect(output).to.equal("01/01/1987");
 		});
 	});
 });
