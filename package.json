@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/danielelidio/AFN.git"
+  },
   "scripts": {
     "test": "mocha ./tests/**/*.test.js"
   },
