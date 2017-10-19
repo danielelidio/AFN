@@ -29,8 +29,8 @@ class AFN {
 		do {
 			input = input.substring(inputCutIndex);
 
+			var i = 0;
 			transictions.every(function(transiction, index) {
-
 
 				if(transiction.getReading() == null) {
 					output.push(transiction.getWrite());
@@ -40,7 +40,14 @@ class AFN {
 					return false;
 				}
 				else {
-					var regexResult = transiction.getReading().exec(input);
+					var reading = transiction.getReading();
+					if(i == 0) {
+						reading = reading.toString().substring(1, reading.toString().length - 1);
+						reading = (reading.substring(0, 1) != '^') ? ('^' + reading) : reading
+						reading = new RegExp(reading);
+					}
+
+					var regexResult = reading.exec(input);
 
 					if(regexResult != null) {
 						var write = "";
@@ -58,9 +65,13 @@ class AFN {
 						transictions = self.transictionTable[transiction.getToState()];
 						inputCutIndex = regexResult.toString().length;
 						return false;
-					}	
+					}
+					else {
+						throw 'Invalid input format!';
+					}
 				}
 
+				i++;
 			});
 			
 		} while(actualTransiction.getToState() != null);
