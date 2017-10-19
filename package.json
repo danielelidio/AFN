@@ -8,7 +8,8 @@
     "url": "https://github.com/danielelidio/AFN.git"
   },
   "scripts": {
-    "test": "mocha ./tests/**/*.test.js"
+    "test": "mocha ./tests/**/*.test.js",
+    "devTest": "mocha -w ./tests/**/*.test.js"
   },
   "author": "",
   "license": "ISC",
